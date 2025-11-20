@@ -1,0 +1,98 @@
+{% block content %}
+<div class="dashboard-container">
+
+    <h1 class="dashboard-title">Welcome to the Student Dashboard</h1>
+    <p class="subtitle">Choose an option below</p>
+
+    <div class="grid-menu">
+
+        <a href="{% url 'student_profile' %}" class="card">
+            <h3>Profile</h3>
+        </a>
+
+        <a href="{% url 'student' %}" class="card">
+            <h3>Students</h3>
+        </a>
+
+        <a href="{% url 'subject' %}" class="card">
+            <h3>Subjects</h3>
+        </a>
+
+        <a href="{% url 'grades' %}" class="card">
+            <h3>Grades</h3>
+        </a>
+
+        <a href="{% url 'teacher' %}" class="card">
+            <h3>Teachers</h3>
+        </a>
+
+        <a href="{% url 'section' %}" class="card">
+            <h3>Sections</h3>
+        </a>
+
+        <a href="{% url 'student_logout' %}" class="card logout-card">
+            <h3>Logout</h3>
+        </a>
+
+    </div>
+
+</div>
+
+<style>
+body {
+    background-color: #fff8f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 40px;
+}
+
+.dashboard-container {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
+
+.dashboard-title {
+    font-family: 'Georgia', serif;
+    font-size: 32px;
+    color: #5a3e36;
+}
+
+.subtitle {
+    color: #a07d5a;
+    margin-bottom: 30px;
+}
+
+.grid-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background-color: #fffdf5;
+    padding: 35px 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: #5a3e36;
+    font-weight: bold;
+    transition: 0.25s;
+}
+
+.card:hover {
+    background-color: #f5e6d3;
+    transform: translateY(-4px);
+}
+
+.logout-card {
+    background-color: #c9a27b;
+    color: white;
+}
+
+.logout-card:hover {
+    background-color: #b28c69;
+}
+</style>
+
+{% endblock %}

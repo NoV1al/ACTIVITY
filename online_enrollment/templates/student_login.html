@@ -1,0 +1,89 @@
+{% block content %}
+<div class="login-container">
+    <h2>Student Login</h2>
+
+    {% for message in messages %}
+        <div class="message">{{ message }}</div>
+    {% endfor %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-submit">Login</button>
+    </form>
+
+    <p class="register-link">Don't have an account? <a href="{% url 'student_register' %}">Register Here</a></p>
+</div>
+
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff8f0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background-color: #fffdf5;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    width: 400px;
+    text-align: center;
+}
+
+h2 {
+    color: #5a3e36;
+    font-family: 'Georgia', serif;
+    margin-bottom: 25px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0 18px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #5a3e36;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #7a524a;
+}
+
+.register-link {
+    margin-top: 15px;
+    color: #5a3e36;
+}
+
+.register-link a {
+    color: #5a3e36;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+.message {
+    color: #a07d5a;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+</style>
+{% endblock %}

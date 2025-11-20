@@ -1,0 +1,115 @@
+{% block content %}
+<h2 style="text-align: center; color: #5a3e36;">Section List</h2>
+
+<div class="action-buttons">
+    <a href="{% url 'add_section' %}" class="btn-add">+ Add Section</a>
+</div>
+
+{% if sections %}
+    <table class="section-table">
+        <thead>
+            <tr>
+                <th>Homeroom</th>
+                <th>Adviser</th>
+                <th>Year Level</th>
+                <th>Course</th>
+                <th>Section Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for section in sections %}
+                <tr>
+                    <td>{{ section.homeroom }}</td>
+                    <td>{{ section.adviser }}</td>
+                    <td>{{ section.year_lvl }}</td>
+                    <td>{{ section.course }}</td>
+                    <td>{{ section.sec_name }}</td>
+                    <td>
+                        <a href="{% url 'edit_section' section.id %}" class="btn-edit">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p style="text-align: center; color: #a07d5a;">No sections found.</p>
+{% endif %}
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #fff8f0;
+        padding: 20px;
+    }
+
+    h2 {
+        font-family: 'Georgia', serif;
+        margin-bottom: 20px;
+    }
+
+    .action-buttons {
+        text-align: right;
+        margin-bottom: 15px;
+    }
+
+    .btn-add {
+        background-color: #5a3e36;
+        color: white;
+        padding: 10px 18px;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+    }
+
+    .btn-add:hover {
+        background-color: #7a524a;
+    }
+
+    .btn-edit {
+        background-color: #c9a27b;
+        color: #5a3e36;
+        padding: 6px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .btn-edit:hover {
+        background-color: #b28c69;
+    }
+
+    .section-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fffdf5;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .section-table th, .section-table td {
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    .section-table thead {
+        background-color: #f5e6d3;
+        color: #5a3e36;
+        font-weight: bold;
+    }
+
+    .section-table tbody tr:nth-child(even) {
+        background-color: #fff7eb;
+    }
+
+    .section-table tbody tr:hover {
+        background-color: #f0e2d0;
+        transition: 0.3s;
+    }
+
+    .section-table th {
+        border-bottom: 2px solid #e2c9aa;
+    }
+</style>
+{% endblock %}

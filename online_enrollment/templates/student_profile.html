@@ -1,0 +1,63 @@
+{% block content %}
+<div class="profile-container">
+    <h2>{{ student.stu_name }}'s Profile</h2>
+
+    <div class="profile-info">
+        <p><strong>Student ID:</strong> {{ student.stu_id }}</p>
+        <p><strong>Name:</strong> {{ student.stu_name }}</p>
+        <p><strong>Email:</strong> {{ student.stu_email }}</p>
+        <p><strong>Contact:</strong> {{ student.stu_con }}</p>
+        <p><strong>Password:</strong> {{ student.stu_pass }}</p>
+    </div>
+
+    <a href="{% url 'dashboard' %}" class="btn-logout">back</a>
+</div>
+
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff8f0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.profile-container {
+    background-color: #fffdf5;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    width: 400px;
+    text-align: center;
+}
+
+h2 {
+    color: #5a3e36;
+    font-family: 'Georgia', serif;
+    margin-bottom: 25px;
+}
+
+.profile-info p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #5a3e36;
+}
+
+.btn-logout {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #c9a27b;
+    color: #5a3e36;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.btn-logout:hover {
+    background-color: #b28c69;
+}
+</style>
+{% endblock %}

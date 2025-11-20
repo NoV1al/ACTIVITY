@@ -1,0 +1,97 @@
+<h2 class="page-title">Edit Subject</h2>
+
+<div class="form-wrapper">
+    <form method="POST" class="styled-form">
+        {% csrf_token %}
+
+        <div class="form-fields">
+            {{ form.as_p }}
+        </div>
+
+        <button type="submit" class="btn-save">Save</button>
+    </form>
+</div>
+
+<style>
+    /* Center container */
+    .form-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    /* Title */
+    .page-title {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        color: #5a3e1b;
+        margin-bottom: 10px;
+    }
+
+    /* Form container */
+    .styled-form {
+        width: 100%;
+        max-width: 420px;
+        background: #fff8e7;
+        border: 1px solid #f0e6d2;
+        padding: 28px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        font-family: Arial, sans-serif;
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Field spacing */
+    .styled-form p {
+        margin-bottom: 15px;
+    }
+
+    /* Inputs */
+    .styled-form input,
+    .styled-form select,
+    .styled-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #e0d6c0;
+        border-radius: 6px;
+        background: #fffef5;
+        font-size: 14px;
+        transition: 0.2s ease;
+    }
+
+    /* Focus effect */
+    .styled-form input:focus,
+    .styled-form select:focus,
+    .styled-form textarea:focus {
+        border-color: #d8b57c;
+        box-shadow: 0 0 4px rgba(216,181,124,0.35);
+        outline: none;
+    }
+
+    /* Save button */
+    .btn-save {
+        background: #f5d6a0;
+        color: #5a3e1b;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 5px;
+        transition: 0.3s ease;
+        font-weight: bold;
+    }
+
+    .btn-save:hover {
+        background: #efd29b;
+    }
+</style>
