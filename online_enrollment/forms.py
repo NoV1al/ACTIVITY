@@ -43,4 +43,13 @@ class GradeForm (forms.ModelForm):
         fields = '__all__'
 
 
+from django import forms
+from .models import student_id
 
+class StudentEditForm(forms.ModelForm):
+    class Meta:
+        model = student_id  # <-- use your actual model
+        fields = ['stu_name', 'stu_email', 'stu_con', 'stu_pass']
+        widgets = {
+            'stu_pass': forms.PasswordInput(),
+        }

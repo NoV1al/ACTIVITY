@@ -1,0 +1,73 @@
+{% block content %}
+<div class="edit-container">
+    <h2>Edit Student Information</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-submit">Save Changes</button>
+    </form>
+
+    <a href="{% url 'student_profile' student.stu_id %}" class="btn-back">Cancel</a>
+</div>
+
+<style>
+  body {
+      background: #eef1f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', Arial;
+  }
+
+  .edit-container {
+      background: #fff;
+      padding: 36px;
+      width: 420px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      border: 1px solid #d4d9e2;
+      text-align: center;
+  }
+
+  h2 {
+      color: #1a2a3a;
+      font-weight: 700;
+      margin-bottom: 20px;
+  }
+
+  input, select {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 8px;
+      border: 1px solid #c2c7d0;
+      background: #f9fbfd;
+      font-weight: 600;
+  }
+
+  .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background: #3a6ea5;
+      color: white;
+      border-radius: 8px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+  }
+
+  .btn-back {
+      margin-top: 14px;
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: #d4d9e2;
+      color: #1a2a3a;
+      text-decoration: none;
+      font-weight: 700;
+  }
+</style>
+{% endblock %}

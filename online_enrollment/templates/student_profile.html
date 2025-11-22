@@ -10,54 +10,77 @@
         <p><strong>Password:</strong> {{ student.stu_pass }}</p>
     </div>
 
-    <a href="{% url 'dashboard' %}" class="btn-logout">back</a>
+    <div class="btn-group">
+        <a href="{% url 'student_edit' student.stu_id %}" class="btn-edit">Edit</a>
+        <a href="{% url 'student_logout' %}" class="btn-back">Logout</a>
+    </div>
 </div>
 
 <style>
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff8f0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+  * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
-.profile-container {
-    background-color: #fffdf5;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    width: 400px;
-    text-align: center;
-}
+  body {
+      margin: 0;
+      background: #eef1f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+  }
 
-h2 {
-    color: #5a3e36;
-    font-family: 'Georgia', serif;
-    margin-bottom: 25px;
-}
+  .profile-container {
+      background: #ffffff;
+      padding: 36px;
+      border-radius: 12px;
+      width: 420px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      border: 1px solid #d4d9e2;
+  }
 
-.profile-info p {
-    font-size: 16px;
-    margin: 10px 0;
-    color: #5a3e36;
-}
+  h2 {
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: #1a2a3a;
+  }
 
-.btn-logout {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #c9a27b;
-    color: #5a3e36;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 6px;
-}
+  .profile-info p {
+      font-size: 16px;
+      margin: 10px 0;
+      color: #3a4b5c;
+  }
 
-.btn-logout:hover {
-    background-color: #b28c69;
-}
+  .btn-group {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+  }
+
+  .btn-edit, .btn-back {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s ease;
+  }
+
+  .btn-edit {
+      background: #3a6ea5;
+      color: white;
+  }
+
+  .btn-edit:hover {
+      background: #2f5a87;
+  }
+
+  .btn-back {
+      background: #d4d9e2;
+      color: #1a2a3a;
+  }
+
+  .btn-back:hover {
+      background: #c2c7d0;
+  }
 </style>
 {% endblock %}

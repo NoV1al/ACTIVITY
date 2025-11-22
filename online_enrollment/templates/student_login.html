@@ -16,74 +16,92 @@
 </div>
 
 <style>
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff8f0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+  * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 
-.login-container {
-    background-color: #fffdf5;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    width: 400px;
-    text-align: center;
-}
+  body {
+      margin: 0;
+      background: #eef1f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+  }
 
-h2 {
-    color: #5a3e36;
-    font-family: 'Georgia', serif;
-    margin-bottom: 25px;
-}
+  .login-container {
+      background: #ffffff;
+      padding: 36px;
+      border-radius: 12px;
+      width: 380px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      border: 1px solid #d4d9e2;
+  }
 
-input[type="text"], input[type="email"], input[type="password"] {
-    width: 100%;
-    padding: 12px 15px;
-    margin: 10px 0 18px 0;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-}
+  h2 {
+      margin: 0 0 18px;
+      font-weight: 700;
+      color: #1a2a3a;
+  }
 
-.btn-submit {
-    width: 100%;
-    padding: 12px;
-    background-color: #5a3e36;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
+  input[type="text"], input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 12px 14px;
+      margin: 12px 0 18px;
+      border-radius: 8px;
+      border: 1px solid #c2c7d0;
+      background: #f9fbfd;
+      font-weight: 600;
+      color: #1a2a3a;
+      transition: 0.2s ease;
+  }
 
-.btn-submit:hover {
-    background-color: #7a524a;
-}
+  input:focus {
+      border-color: #3a6ea5;
+      background: #ffffff;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(58,110,165,0.15);
+  }
 
-.register-link {
-    margin-top: 15px;
-    color: #5a3e36;
-}
+  .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background: #3a6ea5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+  }
 
-.register-link a {
-    color: #5a3e36;
-    font-weight: bold;
-    text-decoration: none;
-}
+  .btn-submit:hover {
+      background: #2f5a87;
+  }
 
-.register-link a:hover {
-    text-decoration: underline;
-}
+  .register-link {
+      margin-top: 14px;
+      color: #3a4b5c;
+      font-weight: 500;
+  }
 
-.message {
-    color: #a07d5a;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
+  .register-link a {
+      color: #3a6ea5;
+      font-weight: 700;
+      text-decoration: none;
+  }
+
+  .register-link a:hover {
+      text-decoration: underline;
+  }
+
+  .message {
+      background: #e8f1ff;
+      color: #244b74;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      border: 1px solid #cddcf0;
+      font-weight: 600;
+  }
 </style>
 {% endblock %}

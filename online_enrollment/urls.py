@@ -25,10 +25,15 @@ urlpatterns = [
 
     # HOME + AUTH
     path('', views.student_login, name="student_login"),
-    path('register/', views.student_register, name="student_register"),
+    path('register/', views.register_view, name="student_register"),
     path('logout/', views.student_logout, name="student_logout"),
     path('profile/', views.student_profile, name='student_profile'),
     path('dashboard/', views.dashboard, name="dashboard"),
+
+# urls.py
+    path('student/<str:stu_id>/edit/', views.student_edit, name='student_edit'),
+    path('student/<str:stu_id>/', views.student_profile, name='student_profile'),
+
 
 
 

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.views import View
 from .models import student_id, grade, section, teacher_profile, subjects
-from .forms import StudentForm, SubjectForm, GradeForm, TeacherForm, SectionForm, StudentRegisterForm, StudentLoginForm
+from .forms import StudentForm, SubjectForm, GradeForm, TeacherForm, SectionForm, StudentRegisterForm, StudentLoginForm, StudentEditForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password, check_password
@@ -162,18 +162,19 @@ def student_login(request):
             return redirect('student_login')
 
         if student.stu_pass == password:
-            request.session['student_id'] = student.id
-            return redirect('dashboard')
+            # Save student ID in session
+            request.session['student_id'] = student.stu_id  # save stu_id instead of PK
+
+            # Redirect to profile page with stu_id parameter
+            return redirect('student_profile', stu_id=student.stu_id)
         else:
             messages.error(request, "Invalid email or password")
             return redirect('student_login')
 
-    # 👇 IMPORTANT — PASS THE FORM HERE
     form = StudentLoginForm()
     return render(request, 'student_login.html', {'form': form})
 
-
-def student_register(request):
+def register_view(request):
     if request.method == 'POST':
         form = StudentRegisterForm(request.POST)
         if form.is_valid():
@@ -181,23 +182,26 @@ def student_register(request):
             stu.stu_pass = form.cleaned_data['password']  # save password correctly
             stu.save()
             messages.success(request, "Account created!")
-            return redirect('dashboard')
+
+            # Redirect to the profile of the newly registered student
+            return redirect('student_profile', stu_id=stu.stu_id)
     else:
         form = StudentRegisterForm()
 
     return render(request, 'student_register.html', {'form': form})
 
-
 def student_logout(request):
     request.session.flush()  # clears all session data
     return redirect('student_login')
 
-def student_profile(request):
-    student_id_session = request.session.get('student_id')
-    if not student_id_session:
-        return redirect('student_login')  # redirect if not logged in
+from .models import student_id
 
-    student = student_id.objects.get(id=student_id_session)
+def student_profile(request, stu_id):
+    # Optional: redirect to login if session doesn't exist
+    if not request.session.get('student_id'):
+        return redirect('student_login')
+
+    student = get_object_or_404(student_id, stu_id=stu_id)
     return render(request, 'student_profile.html', {'student': student})
 
 
@@ -207,3 +211,19 @@ def dashboard(request):
         return redirect('student_login')
 
     return render(request, 'dashboard.html')
+
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import student_id  # <-- use your actual model name
+from .forms import StudentEditForm
+
+def student_edit(request, stu_id):
+    student = get_object_or_404(student_id, stu_id=stu_id)
+    if request.method == "POST":
+        form = StudentEditForm(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('student_profile', stu_id=student.stu_id)
+    else:
+        form = StudentEditForm(instance=student)
+
+    return render(request, 'student_edit.html', {'form': form, 'student': student})
